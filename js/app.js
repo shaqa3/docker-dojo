@@ -7,6 +7,7 @@
 
   const STORE_KEY = "docker-dojo-progress-v1";
   const BADGE_KEY = "docker-dojo-badges-v1";
+  const WELCOME_KEY = "docker-dojo-welcomed-v1";
   const engine = new DockerEngine();
 
   const state = {
@@ -492,6 +493,14 @@
     openOverlay("🏅 Achievements — " + badgeCount() + "/" + BADGES.length, '<div class="badge-grid">' + body + "</div>");
   }
 
+  // ------------------------------------------------------------ welcome ------
+  function showWelcome() { $("#welcome").classList.remove("hidden"); }
+  function dismissWelcome() {
+    $("#welcome").classList.add("hidden");
+    try { localStorage.setItem(WELCOME_KEY, "1"); } catch (e) {}
+    focusInput();
+  }
+
   // ------------------------------------------------------------ overlay ------
   function openOverlay(title, html) {
     $("#overlay-title").innerHTML = title;
@@ -644,7 +653,18 @@
     $("#badges-btn").addEventListener("click", openBadges);
     $("#overlay-close").addEventListener("click", closeOverlay);
     $("#overlay").addEventListener("click", (e) => { if (e.target.id === "overlay") closeOverlay(); });
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeOverlay(); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      if (!$("#welcome").classList.contains("hidden")) dismissWelcome();
+      else closeOverlay();
+    });
+
+    // welcome screen
+    $("#welcome-start").addEventListener("click", () => { dismissWelcome(); selectLesson(0); });
+    $("#welcome-sandbox").addEventListener("click", () => { dismissWelcome(); enterSandbox(); });
+    $("#welcome-skip").addEventListener("click", dismissWelcome);
+    $("#welcome").addEventListener("click", (e) => { if (e.target.id === "welcome") dismissWelcome(); });
+    $("#brand").addEventListener("click", showWelcome); // re-open any time
   }
 
   // --------------------------------------------------------------- init ------
@@ -657,6 +677,9 @@
     wireEvents();
     updateBadgeCount();
     startMetricsTicker();
+    let welcomed = false;
+    try { welcomed = !!localStorage.getItem(WELCOME_KEY); } catch (e) {}
+    if (!welcomed) showWelcome();
     focusInput();
   }
   document.addEventListener("DOMContentLoaded", init);

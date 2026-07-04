@@ -92,6 +92,28 @@
     </div>
   </div>
 
+  <!-- first-run welcome screen -->
+  <div id="welcome" class="hidden">
+    <div class="welcome-card">
+      <div class="welcome-hero">
+        <div class="welcome-whale">🐳</div>
+        <h1>Welcome to Docker Dojo</h1>
+        <p>Learn Docker by <b>doing</b> — type real commands into a safe, simulated terminal. Nothing installs, nothing can break.</p>
+      </div>
+      <div class="welcome-feats">
+        <div class="wf"><span>⌨️</span><b>Hands-on terminal</b><small>50+ real Docker commands, checked step by step.</small></div>
+        <div class="wf"><span>📚</span><b>21 guided lessons</b><small>hello-world → Compose, networking & challenges.</small></div>
+        <div class="wf"><span>◱</span><b>Live dashboard</b><small>Containers, networks & topology update as you type.</small></div>
+        <div class="wf"><span>🧪</span><b>Free-play sandbox</b><small>Experiment with an editable Dockerfile.</small></div>
+      </div>
+      <div class="welcome-actions">
+        <button id="welcome-start" class="primary-btn">Start the first lesson →</button>
+        <button id="welcome-sandbox" class="ghost-btn">Explore the sandbox</button>
+      </div>
+      <button id="welcome-skip" class="welcome-skip">Skip intro</button>
+    </div>
+  </div>
+
   <!-- toast host for badge unlocks -->
   <div id="toasts"></div>
 
