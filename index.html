@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Docker Dojo — Learn Docker by Doing</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- brand -->
+  <div id="brand">
+    <div class="logo-whale">🐳</div>
+    <div class="brand-name">Docker Dojo<small>Learn by doing</small></div>
+  </div>
+
+  <!-- header -->
+  <header id="header">
+    <div class="header-left">
+      <button id="sidebar-toggle" title="Toggle lessons">☰</button>
+      <span class="header-tag">Interactive Docker training · <b>simulated terminal</b></span>
+    </div>
+    <div class="header-right">
+      <div class="progress-wrap">
+        <span id="progress-label">0 / 0 steps</span>
+        <div class="ring">
+          <svg width="40" height="40">
+            <circle id="ring-bg" cx="20" cy="20" r="16" fill="none" stroke-width="4" />
+            <circle id="ring-fg" cx="20" cy="20" r="16" fill="none" stroke-width="4" />
+          </svg>
+          <span id="ring-pct">0%</span>
+        </div>
+      </div>
+      <button id="cheats-btn" class="header-btn">⌨️ Cheat-sheet</button>
+      <button id="badges-btn" class="header-btn">🏅 <span id="badge-count">0/0</span></button>
+      <button id="reset-progress" class="header-btn">Reset progress</button>
+    </div>
+  </header>
+
+  <!-- sidebar -->
+  <nav id="sidebar"><div id="nav"></div></nav>
+
+  <!-- main -->
+  <div id="main">
+    <section id="lesson"></section>
+
+    <div id="right">
+      <section id="term-wrap">
+        <div class="term-bar">
+          <span class="term-dots"><i></i><i></i><i></i></span>
+          <span class="term-title">bash — docker-dojo</span>
+          <span class="term-bar-actions"><button id="reset-term">↻ Reset terminal</button></span>
+        </div>
+        <div id="term">
+          <div id="term-scroll">
+            <div id="term-output"></div>
+          </div>
+          <div class="term-input-row">
+            <span id="prompt"></span>
+            <input id="cmd" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type a command and press Enter…" />
+          </div>
+        </div>
+        <div id="confetti" class="hidden"></div>
+      </section>
+
+      <section id="dash">
+        <div class="dash-bar">
+          <span class="dash-title">◱ Live Docker</span>
+          <span class="dash-seg">
+            <button id="view-state" class="seg active">State</button>
+            <button id="view-topo" class="seg">Topology</button>
+          </span>
+          <span class="dash-legend">
+            <span class="lg"><i class="dot run"></i>running</span>
+            <span class="lg"><i class="dot pause"></i>paused</span>
+            <span class="lg"><i class="dot exit"></i>stopped</span>
+          </span>
+          <button id="dash-toggle" title="Collapse / expand">▾</button>
+        </div>
+        <div id="dash-body"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- overlay modal (cheat-sheet / badges) -->
+  <div id="overlay" class="hidden">
+    <div class="overlay-card">
+      <div class="overlay-bar">
+        <h3 id="overlay-title"></h3>
+        <button id="overlay-close">✕</button>
+      </div>
+      <div id="overlay-body"></div>
+    </div>
+  </div>
+
+  <!-- toast host for badge unlocks -->
+  <div id="toasts"></div>
+
+  <script src="js/lessons.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
