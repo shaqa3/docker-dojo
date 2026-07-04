@@ -2,6 +2,8 @@
 
 **Learn Docker by doing — in a safe, zero-install browser sandbox.**
 
+### ▶️ [**Try it live → shaqa3.github.io/docker-dojo**](https://shaqa3.github.io/docker-dojo/)
+
 Docker Dojo is an interactive, self-contained web app that teaches Docker through hands-on lessons. Learners type **real Docker commands** into a simulated terminal that validates each step and produces faithful-looking output — no Docker daemon, no backend, no cost, no risk. It ships with a live state dashboard, an animated network topology, achievement badges, and a free-play sandbox.
 
 Everything runs from static files. **Open `index.html` and go.**
